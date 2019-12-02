@@ -78,34 +78,11 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 # Installation
-use [Laravel Spatie](https://github.com/spatie/laravel-permission) To make user and role with permission
 
-Click [here](https://docs.spatie.be/laravel-permission/v3/installation-laravel/) to install and how to use it. 
+Packages to install and config with this Respo as : 
 
-use [laravel dusk](https://laravel.com/docs/6.x/dusk) to make browser testing. 
-```bash
-composer require --dev laravel/dusk
-
-php artisan dusk:install
-```
-
-use [Dusk Updater](https://github.com/staudenmeir/dusk-updater) package in case you got error from dusk. 
-```bash
-composer require --dev staudenmeir/dusk-updater
-```
-Download the latest stable ChromeDriver release:
-```bash
-php artisan dusk:update
-```
-Let the updater detect the installed Chrome/Chromium version:
-```bash
-php artisan dusk:update --detect
-```
-Specify the absolute path to your custom Chrome/Chromium installation (not supported on Windows):
-```bash
-php artisan dusk:update --detect=/usr/bin/google-chrome
-```
-Specify the major Chrome/Chromium version manually:
-```bash
-php artisan dusk:update 75
-```
+- [Laravel Spatie](https://github.com/spatie/laravel-permission) use for role and permission for a users.
+    - [Click Here](https://docs.spatie.be/laravel-permission/v3/introduction/) To set up and go to document site.
+- [Laravel Dusk](https://laravel.com/docs/6.x/dusk) To write browser testing. 
+    - [Click Here](https://laravel.com/docs/6.x/dusk) To set up and know how to use. 
+- Optional [Dusk Updater](https://github.com/staudenmeir/dusk-updater) If you're getting errors with browser driver. 
