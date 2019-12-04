@@ -29,15 +29,20 @@
 	<!-- Nav Item - Pages Collapse Menu -->
 	<li class="nav-item">
 		@can('view user')
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+		   aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
 			<span>Users Management</span>
 		</a>
 		@endcan
 		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<a class="collapse-item users-list" href="{{ route('users.index') }}">Users</a>
-				<a class="collapse-item" href="">Roles</a>
+				@can('view user')
+					<a class="collapse-item users-list active" href="{{ route('users.index') }}">Users</a>
+				@endcan
+				@can('view role')
+					<a class="collapse-item role-list" href="{{ route('roles.index') }}">Roles</a>
+				@endcan
 			</div>
 		</div>
 	</li>

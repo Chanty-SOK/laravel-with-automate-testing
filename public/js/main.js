@@ -14575,6 +14575,46 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/assets/scripts/app/role/index.js":
+/*!****************************************************!*\
+  !*** ./resources/assets/scripts/app/role/index.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ((function () {
+  jquery__WEBPACK_IMPORTED_MODULE_0__("#addNewRoleForm").submit(function (e) {
+    e.preventDefault();
+    var form = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
+    var url = form.attr('action');
+    jquery__WEBPACK_IMPORTED_MODULE_0__["ajax"]({
+      type: "POST",
+      url: url,
+      data: form.serialize(),
+      success: function success(data) {
+        window.location.reload();
+      },
+      error: function error(data) {
+        var response = jquery__WEBPACK_IMPORTED_MODULE_0__["parseJSON"](data.responseText);
+
+        if (response.errors) {
+          jquery__WEBPACK_IMPORTED_MODULE_0__["each"](response.errors, function (i, item) {
+            jquery__WEBPACK_IMPORTED_MODULE_0__("#addNewRoleForm [name*='" + i + "']").addClass('is-invalid');
+            jquery__WEBPACK_IMPORTED_MODULE_0__('#addNewRoleForm .error_' + i).html(item);
+          });
+        }
+      }
+    });
+  });
+})());
+
+/***/ }),
+
 /***/ "./resources/assets/scripts/app/user/index.js":
 /*!****************************************************!*\
   !*** ./resources/assets/scripts/app/user/index.js ***!
@@ -14681,14 +14721,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_user__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app/user */ "./resources/assets/scripts/app/user/index.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _app_role__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app/role */ "./resources/assets/scripts/app/role/index.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ((function () {
-  jquery__WEBPACK_IMPORTED_MODULE_1__["ajaxSetup"]({
+  jquery__WEBPACK_IMPORTED_MODULE_2__["ajaxSetup"]({
     headers: {
-      'X-CSRF-TOKEN': jquery__WEBPACK_IMPORTED_MODULE_1__('meta[name="csrf-token"]').attr('content')
+      'X-CSRF-TOKEN': jquery__WEBPACK_IMPORTED_MODULE_2__('meta[name="csrf-token"]').attr('content')
     }
   });
 })());

@@ -17,7 +17,8 @@ class UserAuthenticated
     public function createUserForAccessToDashboard(string $roleName , array $permissions) : object
     {
         $role = $this->createRoleAndGivePermission($roleName, $permissions);
-        return factory(User::class)->create(['password' => 'password123'])->assignRole($role);
+        return factory(User::class)->create(['password' => 'password123'])
+            ->assignRole($role);
     }
 
     public function createRoleAndGivePermission($roleName, $permissions)
