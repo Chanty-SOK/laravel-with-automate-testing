@@ -18,13 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('users', 'Admin\\UserController');
+    Route::group(['middleware' => ['permission:view user']], function () {
+        Route::resource('users', 'Admin\\UserController');
+    });
 
-    Route::resource('roles', 'Admin\\RoleController');
+    Route::group(['middleware' => ['permission:view role']], function () {
+        Route::resource('roles', 'Admin\\RoleController');
+    });
 
-    Route::resource('permissions', 'Admin\\PermissionController')->except(['index', 'edit', 'destroy', 'update']);
+    Route::group(['middleware' => ['permission:update permission']], function () {
+        Route::resource('permissions', 'Admin\\PermissionController')->except(['index', 'edit', 'destroy', 'update']);
+    });
 });
 

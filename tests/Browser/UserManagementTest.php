@@ -21,9 +21,7 @@ class UserManagementTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
-                ->visit('/home')
-                ->clickLink('Users Management')
-                ->click('#collapseTwo a.users-list')
+                ->visit('/users')
                 ->assertPathIs('/users')
                 ->assertSee($user->name)
                 ->assertSee($user->email);

@@ -3,17 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Repositories\PermissionRepository;
-use Illuminate\Http\Request;
 
 class PermissionController extends MainController
 {
-    protected $permissions;
-
-    public function __construct(PermissionRepository $permissions)
-    {
-        $this->permissions = $permissions;
-    }
-
     public function store()
     {
         try {

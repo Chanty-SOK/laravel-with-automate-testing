@@ -42,6 +42,14 @@ abstract class DuskTestCase extends BaseTestCase
             )
         );
     }
+    public function setUp(): void
+    {
+        // first include all the normal setUp operations
+        parent::setUp();
+
+        // now re-register all the roles and permissions
+        $this->app->make(\Spatie\Permission\PermissionRegistrar::class)->registerPermissions();
+    }
 
     public function tearDown() : void
     {

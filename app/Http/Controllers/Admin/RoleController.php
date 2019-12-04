@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Roles\StoreRoleRequest;
-use App\Models\Role;
-use App\Repositories\PermissionRepository;
-use App\Repositories\RolePermissionRepository;
 use App\Repositories\RoleRepository;
-use Illuminate\Http\Request;
+use App\Repositories\PermissionRepository;
+use App\Http\Requests\Roles\StoreRoleRequest;
+use App\Repositories\RolePermissionRepository;
 
 class RoleController extends MainController
 {
@@ -43,7 +41,6 @@ class RoleController extends MainController
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
     }
 
     public function destroy($id)

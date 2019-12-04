@@ -40,11 +40,10 @@ class UserRepository
 
     public function update($data, $id)
     {
-        $user = tap($this->find($id))
-            ->update($data);
-        $user->syncRoles(request('role'));
+        return tap($this->find($id))
+            ->update($data)
+            ->syncRoles(request('role'));
 
-        return $user;
     }
 
     public function destroy($id)
