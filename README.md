@@ -77,12 +77,43 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-# Installation
+# Environment Set Up And Installation
+
+```bash
+copy file .env and rename file as .env.dusk.local
+```
+
+copy and paste it into your .env.dusk.local
+```bash
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=your_app_key
+APP_DEBUG=true
+APP_URL=your_app_url
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=dusk_testing
+```
+
+Go to config/database.php 
+```bash
+'connections' => [
+  .....................
+  'dusk_testing' => [
+            'driver' => 'sqlite',
+            'database' => database_path('database.sqlite'),
+            'prefix' => '',
+        ],
+    ]
+```
+Now let's create database.sqlite into your database/ folder.
 
 Packages to install and config with this Respo as : 
 
 - [Laravel Spatie](https://github.com/spatie/laravel-permission) use for role and permission for a users.
-    - [Click Here](https://docs.spatie.be/laravel-permission/v3/introduction/) To set up and go to document site.
+    - [Click Here](https://docs.spatie.be/laravel-permission/v3/introduction/) To set up and more detail go to document
+     site.
 - [Laravel Dusk](https://laravel.com/docs/6.x/dusk) To write browser testing. 
     - [Click Here](https://laravel.com/docs/6.x/dusk) To set up and know how to use. 
 - Optional [Dusk Updater](https://github.com/staudenmeir/dusk-updater) If you're getting errors with browser driver. 

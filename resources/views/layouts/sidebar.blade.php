@@ -11,41 +11,25 @@
 	<!-- Divider -->
 	<hr class="sidebar-divider my-0">
 	
-	<!-- Nav Item - Dashboard -->
-	<li class="nav-item active">
-		<a class="nav-link" href="index.html">
-			<i class="fas fa-fw fa-tachometer-alt"></i>
-			<span>Dashboard</span></a>
-	</li>
+	<!-- Nav Item - User -->
+	@can('view user')
+		<li class="nav-item {{ (request()->is('users*')) ? 'active' : '' }}">
+			<a class="nav-link" href="{{ route('users.index') }}">
+				<i class="fas fa-user fa-tachometer-alt"></i>
+				<span>User Management</span></a>
+		</li>
+	@endcan
 	
 	<!-- Divider -->
 	<hr class="sidebar-divider">
 	
-	<!-- Heading -->
-	<div class="sidebar-heading">
-		Interface
-	</div>
-	
-	<!-- Nav Item - Pages Collapse Menu -->
-	<li class="nav-item">
-		@can('view user')
-		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-		   aria-expanded="true" aria-controls="collapseTwo">
-			<i class="fas fa-fw fa-cog"></i>
-			<span>Users Management</span>
-		</a>
-		@endcan
-		<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-			<div class="bg-white py-2 collapse-inner rounded">
-				@can('view user')
-					<a class="collapse-item users-list active" href="{{ route('users.index') }}">Users</a>
-				@endcan
-				@can('view role')
-					<a class="collapse-item role-list" href="{{ route('roles.index') }}">Roles</a>
-				@endcan
-			</div>
-		</div>
-	</li>
+	@can('view role')
+		<li class="nav-item {{ (request()->is('roles*')) ? 'active' : '' }}">
+			<a class="nav-link" href="{{ route('roles.index') }}">
+				<i class="fa fa-check-square"></i>
+				<span>Roles & Permissions</span></a>
+		</li>
+	@endcan
 	
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
