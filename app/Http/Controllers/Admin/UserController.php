@@ -39,8 +39,12 @@ class UserController extends MainController
      */
     public function store(StoreUserFormRequest $request)
     {
-        $this->users->create($request->all());
-        return redirect()->back();
+        try {
+            $this->users->create($request->all());
+            return redirect()->back();
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -61,11 +65,21 @@ class UserController extends MainController
      * @param $id
      * @return mixed
      */
-    public function update(StoreUserFormRequest $request, $id)
+    public function update(UpdateUserFormRequest $request, $id)
     {
-       return $this->users->update($request->all(), $id);
+        try {
+            return $this->users->update($request->all(), $id);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
     }
 
+    /**
+     * Delete
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|string
+     */
     public function destroy($id)
     {
         try {
@@ -75,7 +89,5 @@ class UserController extends MainController
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
     }
-
 }

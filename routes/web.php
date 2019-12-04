@@ -17,6 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::resource('users', 'Admin\\UserController');
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::resource('users', 'Admin\\UserController');
+
+    Route::resource('roles', 'Admin\\RoleController');
+
+    Route::resource('permissions', 'Admin\\PermissionController')->except(['index', 'edit', 'destroy', 'update']);
+});
+

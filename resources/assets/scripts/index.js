@@ -1,4 +1,5 @@
 import './app/user';
+import './app/role';
 
 import * as $ from 'jquery';
 

@@ -24,7 +24,9 @@ class UserManagementTest extends DuskTestCase
                 ->visit('/home')
                 ->clickLink('Users Management')
                 ->click('#collapseTwo a.users-list')
-                ->assertPathIs('/users');
+                ->assertPathIs('/users')
+                ->assertSee($user->name)
+                ->assertSee($user->email);
         });
     }
 
@@ -70,20 +72,6 @@ class UserManagementTest extends DuskTestCase
                 ->value('#name', $user['name'])
                 ->value('#email', $user['email'])
                 ->value('#role', $user['role']);
-        });
-    }
-
-    /** @test */
-    public function a_user_authenticated_has_permission_to_delete_user_except_own()
-    {
-        $permissions = ['delete user'];
-        $user = (new UserAuthenticated())->createUserForAccessToDashboard('admin', $permissions);
-        $this->browse(function (Browser $browser) use ($user) {
-            $browser->loginAs($user)
-                ->visit('/users')
-                ->assertPathIs('/users')
-                ->click('a.delete-user')
-                ->acceptDialog();
         });
     }
 
