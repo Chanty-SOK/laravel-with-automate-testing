@@ -10,6 +10,8 @@ class UserRepository
 
     public function __construct(User $users)
     {
+        app()->make(\Spatie\Permission\PermissionRegistrar::class)->forgetCachedPermissions();
+
         $this->users = $users;
     }
 
