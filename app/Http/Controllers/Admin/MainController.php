@@ -10,4 +10,17 @@ use Illuminate\Routing\Controller as BaseController;
 class MainController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * All data request
+     *
+     * @param $request
+     * @param array $except
+     * @return array
+     */
+    public function dataRequest($request, $except = [])
+    {
+        return collect($request)->except($except)
+            ->toArray();
+    }
 }

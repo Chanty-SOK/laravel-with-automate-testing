@@ -31,9 +31,16 @@
 						</a>
 					@endcan
 					@can('delete user')
-						<a class="delete-user">
-							<span class="btn btn-danger btn-sm">Delete &nbsp<i class="fa fa-trash"></i></span>
-						</a>
+					@if ($item->email != config('constants.DEFAULT_EMAIL_LOGIN'))
+						<div class="float-left" style="margin-right: 5px">
+							<form method="POST" action="{{ route('users.destroy', $item->id) }}">
+								@csrf
+								{{ method_field('DELETE') }}
+								<button onclick="return confirm('Are you sure?')" type="submit"
+								        class="btn btn-danger btn-sm">Delete</button>
+							</form>
+						</div>
+						@endif
 					@endcan
 				</td>
 			</tr>

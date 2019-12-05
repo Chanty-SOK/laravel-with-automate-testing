@@ -21,12 +21,15 @@
 							<div class="invalid-feedback error_email"></div>
 						</div>
 						<div class="form-row">
-							<div class="form-group col-md-6">
+							<div class="form-group col-md-12">
 								<label for="password">Password</label>
-								<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+								<input type="password" name="password" class="form-control" id="password"
+								       placeholder="Leave it blank if you don't want to change password.">
 								<div class="invalid-feedback error_password"></div>
 							</div>
-							<div class="form-group col-md-6">
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-12">
 								<label for="inputPassword4">Re-Type Password</label>
 								<input type="password" name="password_confirmation" class="form-control" id="confirmation_password" placeholder="Confirm Password">
 								<div class="invalid-feedback error_password_confirmation"></div>

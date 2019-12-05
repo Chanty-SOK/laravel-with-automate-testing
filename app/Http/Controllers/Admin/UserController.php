@@ -11,6 +11,7 @@ class UserController extends MainController
 {
     protected $users;
     protected $roles;
+    protected $except = [];
 
     public function __construct(UserRepository $users, RoleRepository $roles)
     {
@@ -68,7 +69,11 @@ class UserController extends MainController
     public function update(UpdateUserFormRequest $request, $id)
     {
         try {
-            return $this->users->update($request->all(), $id);
+            if (is_null(request('password')))
+                $this->except = ['password'];
+
+            $data = $this->dataRequest($request, $this->except);
+            return $this->users->update($data, $id);
         } catch (\Exception $e) {
             return $e->getMessage();
         }

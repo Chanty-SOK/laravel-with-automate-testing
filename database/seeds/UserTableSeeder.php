@@ -12,7 +12,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = ['name' => 'admin', 'email' => 'admin@gmail.com', 'password' => 'admin123'];
+        $data = ['name' => 'admin', 'email' => config('constants.DEFAULT_EMAIL_LOGIN'), 'password' => config('constants.DEFAULT_PASSWORD_LOGIN')];
 
         User::firstOrCreate(collect($data)->only('email')->all(), $data)
             ->assignRole('admin')
